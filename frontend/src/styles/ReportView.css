@@ -1,0 +1,99 @@
+/* ReportView.css */
+.report-view {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  line-height: 1.6;
+}
+
+.report-view.empty {
+  text-align: center;
+  color: #999;
+}
+
+.report-header {
+  border-bottom: 2px solid #ecf0f1;
+  padding-bottom: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.report-header h1 {
+  color: #2c3e50;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.report-date {
+  color: #999;
+  font-size: 0.9rem;
+}
+
+.report-section {
+  margin-bottom: 2rem;
+}
+
+.report-section h2 {
+  color: #2c3e50;
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  border-left: 4px solid #667eea;
+  padding-left: 1rem;
+}
+
+.report-section p {
+  color: #555;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+.findings-list {
+  list-style: none;
+}
+
+.findings-list li {
+  background: #f9f9f9;
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+  border-left: 4px solid #764ba2;
+  border-radius: 4px;
+}
+
+.findings-list strong {
+  color: #2c3e50;
+}
+
+.report-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid #ecf0f1;
+}
+
+.print-button,
+.download-button {
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.print-button {
+  background: #667eea;
+  color: white;
+}
+
+.print-button:hover {
+  background: #764ba2;
+}
+
+.download-button {
+  background: #f0f0f0;
+  color: #333;
+  border: 1px solid #ddd;
+}
+
+.download-button:hover {
+  background: #e0e0e0;
+}

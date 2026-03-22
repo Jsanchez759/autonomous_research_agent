@@ -1,0 +1,77 @@
+/* FindingsPanel.css */
+.findings-panel {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.findings-panel h2 {
+  margin-bottom: 1rem;
+  color: #2c3e50;
+  border-bottom: 2px solid #ecf0f1;
+  padding-bottom: 0.5rem;
+}
+
+.findings-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.finding-card {
+  background: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-left: 4px solid #667eea;
+  padding: 1rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.finding-card:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-left-color: #764ba2;
+}
+
+.finding-card h3 {
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+.finding-card p {
+  color: #555;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  margin-bottom: 0.5rem;
+}
+
+.finding-source {
+  font-size: 0.8rem;
+  color: #667eea;
+  margin-bottom: 0.5rem;
+}
+
+.finding-source a {
+  color: #667eea;
+  text-decoration: none;
+  word-break: break-all;
+}
+
+.finding-source a:hover {
+  text-decoration: underline;
+}
+
+.finding-confidence {
+  font-size: 0.8rem;
+  color: #999;
+  font-weight: 600;
+}
+
+.empty-state {
+  text-align: center;
+  color: #999;
+  padding: 2rem;
+}

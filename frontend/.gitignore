@@ -1,0 +1,28 @@
+# Frontend .gitignore
+# Dependencies
+node_modules/
+npm-debug.log
+npm-error.log
+yarn-error.log
+
+# Production
+dist/
+build/
+
+# Misc
+.DS_Store
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Vite
+.vite/
