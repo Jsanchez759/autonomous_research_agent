@@ -2,11 +2,10 @@
 import logging
 from typing import Optional
 from langchain_openai import ChatOpenAI
-from ..core.config import (
+from app.core.config import (
     OPENROUTER_API_KEY,
     OPENROUTER_BASE_URL,
     OPENROUTER_CHAT_MODEL,
-    LLM_TEMPERATURE,
 )
 
 logger = logging.getLogger(__name__)
@@ -33,7 +32,6 @@ class LLMService:
                 api_key=OPENROUTER_API_KEY,
                 base_url=OPENROUTER_BASE_URL,
                 model=OPENROUTER_CHAT_MODEL,
-                temperature=LLM_TEMPERATURE,
             )
             logger.info(f"LLM Service initialized with model: {OPENROUTER_CHAT_MODEL}")
 

@@ -3,9 +3,9 @@ import logging
 from fastapi import APIRouter, HTTPException
 from fastapi.responses import StreamingResponse
 import json
-from ...schemas.research import ResearchRequest, ResearchRunResponse, ResearchStep
-from ...services.research_service import research_service
-from ...agents.research_agent import ResearchAgent
+from app.schemas.research import ResearchRequest, ResearchRunResponse, ResearchStep
+from app.services.research_service import research_service
+from app.agents.research_agent import ResearchAgent
 from datetime import datetime
 
 logger = logging.getLogger(__name__)

@@ -2,10 +2,10 @@
 import logging
 from datetime import datetime
 from typing import Optional
-from langchain.tools import Tool
+from langchain import tools
 from langchain_core.messages import HumanMessage, SystemMessage
-from ..services.llm_service import LLMService
-from ..schemas.research import ResearchStep
+from app.services.llm_service import LLMService
+from app.schemas.research import ResearchStep
 
 logger = logging.getLogger(__name__)
 
@@ -19,7 +19,7 @@ class ResearchAgent:
         self.tools = self._create_tools()
         self.steps: list[ResearchStep] = []
 
-    def _create_tools(self) -> list[Tool]:
+    def _create_tools(self):
         """Create tools for the agent"""
         # TODO: Create LangChain tools from our tool functions
         tools = []
@@ -68,7 +68,7 @@ class ResearchAgent:
             
             return {
                 "topic": topic,
-                "steps": [step.dict()],
+                "steps": [step.model_dump()],
                 "summary": str(response.content),
             }
         

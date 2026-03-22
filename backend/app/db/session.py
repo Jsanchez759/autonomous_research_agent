@@ -2,7 +2,7 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, Session
 from sqlalchemy.pool import StaticPool
-from ..core.config import DATABASE_URL
+from app.core.config import DATABASE_URL
 
 # SQLite engine
 engine = create_engine(

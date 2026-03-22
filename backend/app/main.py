@@ -30,18 +30,6 @@ app.add_middleware(
 app.include_router(api_router, prefix=API_V1_STR)
 
 
-@app.on_event("startup")
-async def startup_event():
-    """Startup event"""
-    logger.info(f"{PROJECT_NAME} started (v{PROJECT_VERSION})")
-
-
-@app.on_event("shutdown")
-async def shutdown_event():
-    """Shutdown event"""
-    logger.info("Application shutdown")
-
-
 @app.get("/")
 async def root():
     """Root endpoint"""

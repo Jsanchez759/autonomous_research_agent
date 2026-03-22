@@ -3,7 +3,7 @@ import logging
 import uuid
 from datetime import datetime
 from typing import Optional, List
-from ..schemas.research import ResearchRequest, ResearchRunResponse, ResearchStep
+from app.schemas.research import ResearchRequest, ResearchRunResponse, ResearchStep
 
 logger = logging.getLogger(__name__)
 

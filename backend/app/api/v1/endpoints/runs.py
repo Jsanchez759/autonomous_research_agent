@@ -1,7 +1,7 @@
 """Research runs history endpoints"""
 import logging
 from fastapi import APIRouter
-from ...services.research_service import research_service
+from app.services.research_service import research_service
 
 logger = logging.getLogger(__name__)
 router = APIRouter(prefix="/runs", tags=["runs"])
