@@ -1,4 +1,5 @@
 import React from 'react';
+import MarkdownContent from './MarkdownContent';
 import '../styles/FindingsPanel.css';
 
 export default function FindingsPanel({ findings }) {
@@ -13,7 +14,7 @@ export default function FindingsPanel({ findings }) {
           {findings.map((finding, index) => (
             <div key={index} className="finding-card">
               <h3>{finding.title}</h3>
-              <p>{finding.content}</p>
+              <MarkdownContent content={finding.content} />
               {finding.source && (
                 <div className="finding-source">
                   Source: <a href={finding.source} target="_blank" rel="noopener noreferrer">

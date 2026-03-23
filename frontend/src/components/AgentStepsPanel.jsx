@@ -1,4 +1,5 @@
 import React from 'react';
+import MarkdownContent from './MarkdownContent';
 import '../styles/AgentStepsPanel.css';
 
 export default function AgentStepsPanel({ steps, isLoading }) {
@@ -21,7 +22,9 @@ export default function AgentStepsPanel({ steps, isLoading }) {
                 </span>
               </div>
               <div className="step-action">{step.action}</div>
-              <div className="step-message">{step.message}</div>
+              <div className="step-message">
+                <MarkdownContent content={step.message} />
+              </div>
               <div className="step-timestamp">
                 {new Date(step.timestamp).toLocaleTimeString()}
               </div>

@@ -1,10 +1,13 @@
 /* ReportView.css */
 .report-view {
   background: white;
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 1.4rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(16, 24, 40, 0.08);
   line-height: 1.6;
+  border: 1px solid #edf2f7;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .report-view.empty {
@@ -19,9 +22,10 @@
 }
 
 .report-header h1 {
-  color: #2c3e50;
-  font-size: 2rem;
+  color: #223246;
+  font-size: 2.15rem;
   margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
 }
 
 .report-date {
@@ -34,11 +38,11 @@
 }
 
 .report-section h2 {
-  color: #2c3e50;
+  color: #243447;
   font-size: 1.3rem;
-  margin-bottom: 1rem;
-  border-left: 4px solid #667eea;
-  padding-left: 1rem;
+  margin-bottom: 0.8rem;
+  border-left: 4px solid #4f67d4;
+  padding-left: 0.85rem;
 }
 
 .report-section p {
@@ -52,11 +56,13 @@
 }
 
 .findings-list li {
-  background: #f9f9f9;
+  background: #f8fafc;
   padding: 1rem;
   margin-bottom: 0.5rem;
-  border-left: 4px solid #764ba2;
-  border-radius: 4px;
+  border-left: 4px solid #4f67d4;
+  border-radius: 8px;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .findings-list strong {
@@ -77,6 +83,8 @@
   border-radius: 4px;
   font-weight: 600;
   transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
 }
 
 .print-button {
@@ -96,4 +104,17 @@
 
 .download-button:hover {
   background: #e0e0e0;
+}
+
+.print-button:disabled,
+.download-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+  .report-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
 }

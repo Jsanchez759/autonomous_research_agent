@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import ResearchForm from '../components/ResearchForm';
 import AgentStepsPanel from '../components/AgentStepsPanel';
-import FindingsPanel from '../components/FindingsPanel';
 import ReportView from '../components/ReportView';
-import { startResearch, getRunStatus } from '../services/api';
+import MarkdownContent from '../components/MarkdownContent';
+import { startResearch, getRunStatus, getRunReport } from '../services/api';
 import '../styles/HomePage.css';
 
 export default function HomePage() {
@@ -25,10 +25,19 @@ export default function HomePage() {
         
         if (status.status === 'completed') {
           setIsLoading(false);
-          // Parse report if available
-          if (status.report) {
-            setReport(status.report);
+          try {
+            const finalReport = await getRunReport(currentRun.run_id);
+            setReport(finalReport);
+          } catch {
+            if (status.report) {
+              setReport(status.report);
+            }
           }
+        }
+
+        if (status.status === 'failed') {
+          setIsLoading(false);
+          setError(status.error || 'Research run failed.');
         }
       } catch (err) {
         console.error('Error fetching status:', err);
@@ -50,6 +59,14 @@ export default function HomePage() {
       // If research completes immediately
       if (result.status === 'completed') {
         setIsLoading(false);
+        try {
+          const finalReport = await getRunReport(result.run_id);
+          setReport(finalReport);
+        } catch {
+          if (result.report) {
+            setReport(result.report);
+          }
+        }
       }
     } catch (err) {
       setError(err.message);
@@ -82,18 +99,15 @@ export default function HomePage() {
               steps={currentRun?.steps || []} 
               isLoading={isLoading} 
             />
-            <FindingsPanel 
-              findings={currentRun?.findings || []} 
-            />
           </div>
 
           <div className="report-section">
             {report ? (
-              <ReportView report={report} />
+              <ReportView report={report} runId={currentRun?.run_id} />
             ) : currentRun && currentRun.summary ? (
               <div className="summary-view">
                 <h2>Research Summary</h2>
-                <p>{currentRun.summary}</p>
+                <MarkdownContent content={currentRun.summary} />
               </div>
             ) : (
               <div className="empty-report">

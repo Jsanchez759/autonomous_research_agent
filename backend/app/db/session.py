@@ -2,11 +2,12 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, Session
 from sqlalchemy.pool import StaticPool
-from app.core.config import DATABASE_URL
+from app.core.config import settings
+from app.db.models import Base
 
 # SQLite engine
 engine = create_engine(
-    DATABASE_URL,
+    settings.database_url,
     connect_args={"check_same_thread": False},
     poolclass=StaticPool,
 )
@@ -16,6 +17,11 @@ SessionLocal = sessionmaker(
     autoflush=False,
     bind=engine,
 )
+
+
+def init_db() -> None:
+    """Initialize database tables."""
+    Base.metadata.create_all(bind=engine)
 
 
 def get_db():

@@ -1,5 +1,5 @@
 """Research request/response schemas"""
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from typing import List, Optional
 from datetime import datetime
 
@@ -7,7 +7,7 @@ from datetime import datetime
 class ResearchRequest(BaseModel):
     """Research request from frontend"""
     topic: str
-    max_iterations: Optional[int] = 5
+    max_iterations: int = Field(default=5, ge=1, le=10)
 
 
 class ResearchStep(BaseModel):
@@ -25,6 +25,8 @@ class ResearchFinding(BaseModel):
     content: str
     source: Optional[str] = None
     confidence: float = 0.8
+    evidence_strength: str = "medium"
+    citations: List[str] = []
 
 
 class ResearchReport(BaseModel):
@@ -34,6 +36,10 @@ class ResearchReport(BaseModel):
     findings: List[ResearchFinding]
     conclusion: str
     generated_at: datetime
+    steps_taken: Optional[int] = None
+    status: Optional[str] = None
+    pdf_path: Optional[str] = None
+    pdf_filename: Optional[str] = None
 
 
 class ResearchRunResponse(BaseModel):
@@ -42,6 +48,8 @@ class ResearchRunResponse(BaseModel):
     topic: str
     status: str  # pending, running, completed, failed
     steps: List[ResearchStep]
+    summary: str = ""
+    findings: List[ResearchFinding] = []
     report: Optional[ResearchReport] = None
     error: Optional[str] = None
     created_at: datetime

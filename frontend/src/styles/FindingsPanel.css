@@ -2,8 +2,8 @@
 .findings-panel {
   background: white;
   padding: 1.5rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(16, 24, 40, 0.08);
 }
 
 .findings-panel h2 {
@@ -17,17 +17,20 @@
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  max-height: 400px;
+  max-height: 520px;
   overflow-y: auto;
+  padding-right: 0.25rem;
 }
 
 .finding-card {
-  background: #f9f9f9;
-  border: 1px solid #e0e0e0;
-  border-left: 4px solid #667eea;
+  background: #f8fafc;
+  border: 1px solid #e7edf5;
+  border-left: 4px solid #4f67d4;
   padding: 1rem;
-  border-radius: 4px;
+  border-radius: 8px;
   transition: all 0.3s ease;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .finding-card:hover {
@@ -44,7 +47,7 @@
 .finding-card p {
   color: #555;
   font-size: 0.9rem;
-  line-height: 1.4;
+  line-height: 1.55;
   margin-bottom: 0.5rem;
 }
 

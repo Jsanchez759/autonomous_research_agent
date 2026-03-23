@@ -1,7 +1,9 @@
 import React from 'react';
+import { getReportPdfUrl } from '../services/api';
+import MarkdownContent from './MarkdownContent';
 import '../styles/ReportView.css';
 
-export default function ReportView({ report }) {
+export default function ReportView({ report, runId }) {
   if (!report) {
     return (
       <div className="report-view empty">
@@ -21,30 +23,33 @@ export default function ReportView({ report }) {
 
       <section className="report-section">
         <h2>Summary</h2>
-        <p>{report.summary}</p>
+        <MarkdownContent content={report.summary} />
       </section>
 
       {report.findings && report.findings.length > 0 && (
         <section className="report-section">
-          <h2>Findings</h2>
+          <h2>Insights</h2>
           <ul className="findings-list">
             {report.findings.map((finding, index) => (
               <li key={index}>
-                <strong>{finding.title}:</strong> {finding.content}
+                <strong>{finding.title}</strong>
+                <MarkdownContent content={finding.content} />
               </li>
             ))}
           </ul>
         </section>
       )}
 
-      <section className="report-section">
-        <h2>Conclusion</h2>
-        <p>{report.conclusion}</p>
-      </section>
-
       <div className="report-actions">
         <button onClick={() => window.print()} className="print-button">
           Print Report
+        </button>
+        <button
+          onClick={() => downloadPdf(runId)}
+          className="download-button"
+          disabled={!runId}
+        >
+          Download PDF
         </button>
         <button onClick={() => downloadReport(report)} className="download-button">
           Download as JSON
@@ -63,4 +68,12 @@ function downloadReport(report) {
   link.download = `report-${report.topic.replace(/\s+/g, '-')}.json`;
   link.click();
   URL.revokeObjectURL(url);
+}
+
+function downloadPdf(runId) {
+  if (!runId) {
+    return;
+  }
+  const url = getReportPdfUrl(runId);
+  window.open(url, '_blank', 'noopener,noreferrer');
 }

@@ -2,7 +2,7 @@
 import logging
 import logging.config
 
-from .config import LOG_LEVEL
+from .config import settings
 
 
 def setup_logging() -> None:
@@ -25,19 +25,19 @@ def setup_logging() -> None:
             "loggers": {
                 "app": {
                     "handlers": ["console"],
-                    "level": LOG_LEVEL,
+                    "level": settings.LOG_LEVEL,
                     "propagate": False,
                 },
                 "uvicorn.error": {
-                    "level": LOG_LEVEL,
+                    "level": settings.LOG_LEVEL,
                 },
                 "uvicorn.access": {
-                    "level": LOG_LEVEL,
+                    "level": settings.LOG_LEVEL,
                 },
             },
             "root": {
                 "handlers": ["console"],
-                "level": LOG_LEVEL,
+                "level": settings.LOG_LEVEL,
             },
         }
     )

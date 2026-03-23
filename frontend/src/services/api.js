@@ -38,6 +38,26 @@ export const getRunStatus = async (runId) => {
 };
 
 /**
+ * Get final report for a run
+ */
+export const getRunReport = async (runId) => {
+  const response = await fetch(`${API_BASE_URL}/research/report/${runId}`);
+
+  if (!response.ok) {
+    throw new Error(`Failed to get report: ${response.statusText}`);
+  }
+
+  return response.json();
+};
+
+/**
+ * Build backend PDF endpoint URL for a run
+ */
+export const getReportPdfUrl = (runId) => {
+  return `${API_BASE_URL}/research/report/${runId}/pdf`;
+};
+
+/**
  * Get list of all runs
  */
 export const listRuns = async () => {
@@ -47,6 +67,21 @@ export const listRuns = async () => {
     throw new Error(`Failed to list runs: ${response.statusText}`);
   }
   
+  return response.json();
+};
+
+/**
+ * Delete a run
+ */
+export const deleteRun = async (runId) => {
+  const response = await fetch(`${API_BASE_URL}/runs/${runId}`, {
+    method: 'DELETE',
+  });
+
+  if (!response.ok) {
+    throw new Error(`Failed to delete run: ${response.statusText}`);
+  }
+
   return response.json();
 };
 

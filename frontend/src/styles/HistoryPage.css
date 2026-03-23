@@ -43,6 +43,7 @@
 .runs-table td {
   padding: 1rem;
   border-bottom: 1px solid #eee;
+  vertical-align: middle;
 }
 
 .runs-table tbody tr {
@@ -85,4 +86,66 @@
   background: #fef0f0;
   border: 1px solid #fcc;
   color: #c33;
+}
+
+.actions-cell {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.action-button {
+  border: 1px solid #ddd;
+  background: #f8f9fa;
+  color: #2c3e50;
+  font-size: 0.85rem;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.action-button:hover:not(:disabled) {
+  background: #e9ecef;
+}
+
+.action-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.action-button.danger {
+  background: #fdecec;
+  color: #a61b1b;
+  border-color: #f5c2c7;
+}
+
+.action-button.danger:hover:not(:disabled) {
+  background: #f8d7da;
+}
+
+.selected-run-panel {
+  margin-top: 2rem;
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 1.25rem;
+}
+
+.selected-run-panel h2 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: #2c3e50;
+}
+
+.run-meta {
+  background: #f7f9fc;
+  border: 1px solid #e9eef6;
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.run-meta p {
+  margin: 0.25rem 0;
+  color: #34495e;
 }
